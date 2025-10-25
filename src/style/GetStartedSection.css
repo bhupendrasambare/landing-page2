@@ -1,0 +1,111 @@
+.getstarted-section {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(203, 48, 224, 1);
+  border-radius: 16px;
+  overflow: hidden;
+
+  /* Right-side PNG as background */
+  background-image: url("../assets/bg-style.png");
+  background-repeat: no-repeat;
+  background-position: right top; /* align to top */
+  background-size: auto 100%; /* height matches content */
+}
+
+/* Content box */
+.getstarted-content {
+  position: relative;
+  padding: 60px 40px;
+  max-width: 600px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Blurred Circle */
+.blur-circle {
+  position: absolute;
+  bottom: -60%;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(33, 33, 33, 1);
+  filter: blur(200px);
+  border-radius: 50px;
+  z-index: -2; /* increase z-index to be above background */
+}
+
+/* Title & description */
+.getstarted-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+  text-align: left;
+}
+
+.getstarted-desc {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+  text-align: left;
+}
+
+/* Buttons */
+.trusted-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: default;
+  width: fit-content;
+}
+
+.getstarted-btn-bottom {
+  background-color: #fff;
+  color: rgba(203, 48, 224, 1);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .getstarted-section {
+    background-position: center top;
+    background-size: auto 100%; /* ensure height matches content */
+  }
+
+  .blur-circle {
+    bottom: -50%;
+    left: -30%;
+    width: 300px;
+    height: 300px;
+    filter: blur(300px);
+  }
+
+  .getstarted-content {
+    width: 100%;
+    padding: 40px 30px;
+  }
+
+  .getstarted-title {
+    font-size: 36px;
+  }
+
+  .getstarted-desc {
+    font-size: 16px;
+  }
+}

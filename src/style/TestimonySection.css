@@ -1,0 +1,119 @@
+.testimony-section {
+  background: #fff;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.testimony-title {
+  font-family: "Satoshi", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.testimony-subtitle {
+  color: #555;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* Scroll containers */
+.testimony-scroll-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 500px;
+  overflow-y: hidden;
+}
+
+/* Card */
+.testimonial-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  color: #333;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.testimonial-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  color: #111;
+}
+
+.testimonial-title {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Gradient fade at top & bottom */
+.testimony-scroll-container::before,
+.testimony-scroll-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.testimony-scroll-container::before {
+  top: 0;
+  background: linear-gradient(to bottom, white, transparent);
+}
+
+.testimony-scroll-container::after {
+  bottom: 0;
+  background: linear-gradient(to top, white, transparent);
+}
+
+/* Desktop vs Mobile view */
+.desktop {
+  display: flex;
+}
+
+.mobile {
+  display: none;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 500px;
+  overflow-y: hidden;
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+  }
+}

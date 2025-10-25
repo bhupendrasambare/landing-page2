@@ -1,0 +1,215 @@
+.stack-container {
+  width: 100%;
+}
+
+.stack-section {
+  background-color: rgba(249, 247, 251, 1);
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 -12px 20px -8px rgba(0, 0, 0, 0.1);
+}
+
+.stack-content {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 80px 120px;
+  overflow-y: auto;
+  max-height: 100vh;
+  scroll-behavior: smooth;
+  z-index: 2;
+}
+
+/* Large background number */
+.page-number-bg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 18rem;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.8;
+  pointer-events: none;
+  background: linear-gradient(180deg, #c95fff 30%, rgba(201, 95, 255, 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 0;
+}
+
+.stack-title {
+  font-family: "Satoshi", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+  text-align: left;
+  z-index: 2;
+  position: relative;
+}
+
+.stack-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 60px;
+  text-align: left;
+  max-width: 650px;
+  z-index: 2;
+  position: relative;
+}
+
+.stack-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left section with bullet points */
+.stack-left {
+  flex: 1;
+}
+.pre-bullet-title{
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.bullet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tick-icon {
+  color: #28a745;
+  font-size: 20px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.bullet-list span {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Right image section */
+.stack-right {
+  flex: 1.5;
+  display: flex;
+  justify-content: center;
+}
+
+.stack-image {
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.stack-image:hover {
+  transform: scale(1.03);
+}
+
+/* Add bottom scroll spacing */
+.stack-container::after {
+  content: "";
+  display: block;
+  height: 100vh;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .stack-layout {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .stack-content {
+    padding: 60px 40px;
+  }
+
+  .stack-title {
+    font-size: 42px;
+  }
+
+  .stack-subtitle {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .page-number-bg {
+    font-size: 10rem;
+    left: 10%;
+  }
+
+  .stack-image {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .stack-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .stack-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .stack-left {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .stack-image {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .page-number-bg {
+    font-size: 8rem;
+    top: 15%;
+    left: 10%;
+  }
+
+  .stack-title {
+    font-size: 32px;
+  }
+
+  .stack-subtitle {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+
+  .bullet-list span {
+    font-size: 15px;
+  }
+
+  .tick-icon {
+    font-size: 18px;
+  }
+
+  .stack-right {
+    display: none;
+  }
+}

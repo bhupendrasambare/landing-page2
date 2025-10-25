@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import DescriptionSection from "./components/DescriptionSection";
+import FeatureSection from "./components/FeatureSection";
+import FooterSection from "./components/FooterSection";
+import GetStartedSection from "./components/GetStartedSection";
+import HeroSection from "./components/HeroSection";
+import MultiStackScroll from "./components/MultiStackScroll";
+import NavbarComponent from "./components/NavbarComponent";
+import TeamSection from "./components/TeamSection";
+import TestimonySection from "./components/TestimonySection";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="top-bg">
+        <NavbarComponent />
+        <HeroSection />
+      </div>
+      <FeatureSection />
+      <MultiStackScroll />
+      <TeamSection/>
+      <DescriptionSection/>
+      <TestimonySection/>
+      <GetStartedSection/>
+      <FooterSection/>
+
+    </>
   );
-}
+};
 
 export default App;

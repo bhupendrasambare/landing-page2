@@ -1,0 +1,118 @@
+.feature-section {
+  min-height: 100vh;
+  background-color: #fff;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.feature-title {
+  font-family: "Satoshi", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.feature-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+  text-align: left;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.feature-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-left: 100px;
+  min-height: 400px;
+}
+
+.feature-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.feature-card {
+  flex: 0 0 320px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 360px;
+  cursor: pointer;
+  transition: all 0.3s ease, background 0.3s ease;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card.reversed {
+  background-color: rgba(175, 84, 221, 1);
+}
+
+.feature-icon {
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  color: rgba(175, 84, 221, 1);
+  background-color: #fff;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.feature-card.reversed .feature-icon {
+  background-color: rgba(175, 84, 221, 1);
+  color: #fff;
+}
+
+.feature-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+  margin-top: 0;
+  z-index: 2;
+  padding-left: 0;
+}
+
+.feature-card-content h4 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.feature-card-content p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+}
+
+.feature-card.reversed .feature-card-content h4,
+.feature-card.reversed .feature-card-content p {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+
+  .feature-slider {
+    padding-left: 30px;
+  }
+}

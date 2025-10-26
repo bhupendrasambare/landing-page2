@@ -1,5 +1,7 @@
-import React from "react";
 import "../style/TeamSection.css";
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 import TeamFrame1 from "../assets/team/TeamFrame1.png";
 import TeamFrame2 from "../assets/team/TeamFrame2.png";
 import TeamFrame3 from "../assets/team/TeamFrame3.png";
@@ -26,25 +28,37 @@ const teamCards = [
 ];
 
 const TeamSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="team-section" id="why-us">
+    <section className="team-section" id="why-us" ref={ref}>
       <div className="team-container">
-        <div className="team-header">
+        <motion.div
+          className="team-header"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="team-title">Why Teams Choose Us</h2>
-          <p className="team-subtitle">
-            Experience measurable results and ROI from day one.
-          </p>
-        </div>
+          <p className="team-subtitle">Experience measurable results and ROI from day one.</p>
+        </motion.div>
 
         <div className="team-cards">
           {teamCards.map((card, index) => (
-            <div className="team-card" key={index}>
+            <motion.div
+              key={index}
+              className="team-card"
+              initial={{ opacity: 0, y: 80 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 * index, ease: "easeOut" }}
+            >
               <img src={card.image} alt={card.title} className="team-card-img" />
               <div className="team-card-body">
                 <h3 className="team-card-title">{card.title}</h3>
                 <p className="team-card-desc">{card.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

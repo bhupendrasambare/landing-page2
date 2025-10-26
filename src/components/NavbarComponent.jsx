@@ -12,6 +12,10 @@ const NavbarComponent = () => {
     {"name":"Testimonials", tag:"testimonials"}
   ];
 
+  const handleGetStarted = () => {
+    window.open("https://mprar.vercel.app", "_blank");
+  };
+
   return (
     <Navbar expand="lg" className="custom-navbar" expanded={isOpen}>
       <div className="container">
@@ -64,7 +68,7 @@ const NavbarComponent = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + navLinks.length * 0.1 }}
             >
-              <div className="getstarted-btn btn btn-sm">Get Started</div>
+              <div className="getstarted-btn btn btn-sm"  onClick={handleGetStarted}>Get Started</div>
             </motion.div>
           </Nav>
         </Navbar.Collapse>

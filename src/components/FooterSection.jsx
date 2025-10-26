@@ -27,24 +27,15 @@ const FooterSection = () => {
             <div className="footer-links">
               <div className="footer-column">
                 <h4>Product</h4>
-                <a href="#">Feature</a>
-                <a href="#">Price</a>
-                <a href="#">Integrations</a>
-                <a href="#">Security</a>
+                <a href="#features">Feature</a>
+                <a href="#demo">Demo</a>
+                <a href="#why-us">Why us</a>
+                <a href="#testimonials">Testimonials</a>
               </div>
 
               <div className="footer-column">
                 <h4>Company</h4>
                 <a href="#">About</a>
-                <a href="#">Blog</a>
-                <a href="#">Careers</a>
-                <a href="#">Partner</a>
-              </div>
-
-              <div className="footer-column">
-                <h4>Support</h4>
-                <a href="#">Health Center</a>
-                <a href="#">Contact</a>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
               </div>

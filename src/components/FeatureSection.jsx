@@ -18,13 +18,25 @@ const FeatureSection = () => {
   const [hovered, setHovered] = useState(null);
   const [permanentReversed, setPermanentReversed] = useState(0);
 
-  const handleMouseEnter = (index) => {
-    setHovered(index);
-  };
-
+  const handleMouseEnter = (index) => setHovered(index);
   const handleMouseLeave = (index) => {
     setHovered(null);
-    setPermanentReversed(index); 
+    setPermanentReversed(index);
+  };
+
+  // Container variants for stagger
+  const containerVariant = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  // Card variants - animate from right to left
+  const cardVariant = {
+    hidden: { opacity: 0, x: 100 }, // start offscreen right
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    hover: { scale: 1.03, boxShadow: "0 15px 40px rgba(0,0,0,0.2)" }
   };
 
   return (
@@ -49,30 +61,37 @@ const FeatureSection = () => {
         </motion.p>
       </div>
 
-      <div>
-        <div className="feature-slider">
-          {features.map((f, i) => {
-            const isReversed = i === permanentReversed || i === hovered;
-            return (
-              <motion.div
-                key={i}
-                className={`feature-card shadow my-3 ${isReversed ? "reversed" : ""}`}
-                onMouseEnter={() => handleMouseEnter(i)}
-                onMouseLeave={() => handleMouseLeave(i)}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <div className="feature-icon">{f.icon}</div>
-                <div className="feature-card-content">
-                  <h4>{f.title}</h4>
-                  <p>{f.desc}</p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+      <motion.div
+        className="feature-slider"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.15 } }
+        }}
+      >
+        {features.map((f, i) => {
+          const isReversed = i === permanentReversed || i === hovered;
+          return (
+            <motion.div
+              key={i}
+              className={`feature-card my-3 ${isReversed ? "reversed" : ""}`}
+              onMouseEnter={() => handleMouseEnter(i)}
+              onMouseLeave={() => handleMouseLeave(i)}
+              initial={{ opacity: 0, x: 200 }}     // start far right
+              animate={{ opacity: 1, x: 0 }}       // move to position
+              transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, boxShadow: "0 15px 40px rgba(0,0,0,0.2)" }}
+            >
+              <div className="feature-icon">{f.icon}</div>
+              <div className="feature-card-content">
+                <h4>{f.title}</h4>
+                <p>{f.desc}</p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
     </section>
   );
 };

@@ -80,13 +80,19 @@ const MultiStackScroll = () => {
           className="stack-section"
           style={{ backgroundColor: page.color }}
         >
+
           <div className="stack-content container">
             {/* Background Number */}
+
             <div className="page-number-bg">{page.id}</div>
 
-            {page.title && <h2 className="stack-title">{page.title}</h2>}
-            {page.subtitle && <p className="stack-subtitle">{page.subtitle}</p>}
 
+          {page.title && 
+            <div className="title-space">
+              {page.title && <h2 className="stack-title">{page.title}</h2>}
+              {page.subtitle && <p className="stack-subtitle">{page.subtitle}</p>}
+            </div>
+          }
             <div className="stack-layout">
               <div className="stack-left">
                 <div className="pre-bullet-title">

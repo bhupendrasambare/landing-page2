@@ -1,33 +1,77 @@
 import HERO_SECTION_IMAGE from "../assets/herosection.png";
 import "../style/HeroStyle.css";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
+  // Animation variants
+  const textVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+
+  const imageVariant = {
+    hidden: { opacity: 0, scale: 1 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, delay: 0.8, ease: "easeOut" } },
+  };
+
+  const handleGetStarted = () => {
+    window.open("https://mprar.vercel.app", "_blank");
+  };
+
   return (
     <section className="hero-section d-flex align-items-center justify-content-center text-center">
       <div className="container hero-content">
-        <div className="trusted-pill mb-3 mx-auto">
+        <motion.div
+          className="trusted-pill mb-3 mx-auto"
+          variants={textVariant}
+          initial="hidden"
+          animate="visible"
+        >
           Trusted by 10,000+ Companies Worldwide
-        </div>
+        </motion.div>
 
-        <h1 className="hero-title mb-3">
+        <motion.h1
+          className="hero-title mb-3"
+          variants={textVariant}
+          initial="hidden"
+          animate="visible"
+        >
           Complete Employee Management Ecosystem
-        </h1>
+        </motion.h1>
 
-        <p className="hero-subtitle mx-auto mb-1 fs-6">
+        <motion.p
+          className="hero-subtitle mx-auto mb-1 fs-6"
+          variants={textVariant}
+          initial="hidden"
+          animate="visible"
+        >
           From clocking in to performance reviews, manage every aspect of your
           workforce with one powerful platform. Designed for employees,
           managers, and administrators.
-        </p>
+        </motion.p>
 
-        <div className="getstarted-btn btn hero-btn btn-sm">Get Started</div>
+        <motion.div
+          className="getstarted-btn btn hero-btn btn-sm"
+          variants={textVariant}
+          initial="hidden"
+          animate="visible"
+          onClick={handleGetStarted}
+        >
+          Get Started
+        </motion.div>
 
-        <div className="hero-image mt-5">
+        <motion.div
+          className="hero-image mt-5"
+          variants={imageVariant}
+          initial="hidden"
+          animate="visible"
+        >
           <img
             src={HERO_SECTION_IMAGE}
             alt="Hero"
             className="img-fluid hero-image-file"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

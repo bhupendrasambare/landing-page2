@@ -24,23 +24,32 @@
   max-height: 100vh;
   scroll-behavior: smooth;
   z-index: 2;
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Large background number */
 .page-number-bg {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 0;
   transform: translateY(-50%);
-  font-size: 18rem;
+  font-size: 10rem;
   font-weight: 900;
   line-height: 1;
   opacity: 0.8;
   pointer-events: none;
-  background: linear-gradient(180deg, #c95fff 30%, rgba(201, 95, 255, 0) 100%);
+  background: linear-gradient(180deg, #C95FFF 30%, rgba(201, 95, 255, 0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   z-index: 0;
+}
+
+.title-space{
+  margin-top: 50px;
 }
 
 .stack-title {
@@ -67,7 +76,6 @@
 
 .stack-layout {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 60px;
   position: relative;
@@ -143,7 +151,11 @@
   }
 
   .stack-content {
-    padding: 60px 40px;
+    padding: 20px 40px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .stack-title {
@@ -156,8 +168,8 @@
   }
 
   .page-number-bg {
-    font-size: 10rem;
-    left: 10%;
+    top: 15vh;
+    right: 0;
   }
 
   .stack-image {
@@ -187,9 +199,10 @@
   }
 
   .page-number-bg {
-    font-size: 8rem;
-    top: 15%;
-    left: 10%;
+    top: 10vh;
+    right: 0;
+    left: 70%;
+    z-index: 1;
   }
 
   .stack-title {

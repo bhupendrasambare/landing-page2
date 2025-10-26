@@ -139,6 +139,9 @@
   .footer-links {
     gap: 40px;
   }
+  .back-to-top{
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

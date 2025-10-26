@@ -106,7 +106,30 @@
   gap: 1.2rem;
   max-height: 500px;
   overflow-y: hidden;
+  position: relative;
 }
+
+.mobile::before,
+.mobile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+
+.mobile::before {
+  top: 0;
+  background: linear-gradient(to bottom, white, transparent);
+}
+
+.mobile::after {
+  bottom: 0;
+  background: linear-gradient(to top, white, transparent);
+} 
 
 @media (max-width: 768px) {
   .desktop {

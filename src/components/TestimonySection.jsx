@@ -12,7 +12,7 @@ const testimonialsGroup = [
       title: "HR Director, FinEdge",
       img: user1,
     },
-    {
+    { 
       text: "This tool has streamlined our communication and boosted employee engagement like never before.",
       name: "Aisha Thompson",
       title: "CEO, WorkWave",

@@ -2,6 +2,11 @@ import React from "react";
 import "../style/GetStartedSection.css";
 
 const GetStartedSection = () => {
+
+  const handleGetStarted = () => {
+    window.open("https://mprar.vercel.app", "_blank");
+  };
+  
   return (
     <section className="container">
       <div className="getstarted-section my-5">
@@ -20,7 +25,7 @@ const GetStartedSection = () => {
           <button className="trusted-btn">
             Trusted by 500+ growing teams worldwide.
           </button>
-          <button className="getstarted-btn-bottom">Get Started</button>
+          <button className="getstarted-btn-bottom" onClick={handleGetStarted}>Get Started</button>
         </div>
 
       </div>

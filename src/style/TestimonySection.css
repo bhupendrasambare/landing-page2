@@ -27,7 +27,14 @@
   position: relative;
 }
 
+.scroll-column,
+.testimony-scroll-container {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 .scroll-column {
+  scroll-behavior: auto !important;
   flex: 1;
   display: flex;
   flex-direction: column;

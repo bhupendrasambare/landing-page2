@@ -19,7 +19,7 @@
   width: 100%;
   box-sizing: border-box;
   position: relative;
-  padding: 80px 120px;
+  padding: 50px 120px;
   overflow-y: auto;
   max-height: 100vh;
   scroll-behavior: smooth;
@@ -76,6 +76,7 @@
 
 .stack-layout {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 60px;
   position: relative;
@@ -84,6 +85,7 @@
 
 /* Left section with bullet points */
 .stack-left {
+  min-width: 300px;
   flex: 1;
 }
 .pre-bullet-title{
@@ -126,6 +128,7 @@
 }
 
 .stack-image {
+  max-height: 300px;
   max-width: 500px;
   border-radius: 16px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);

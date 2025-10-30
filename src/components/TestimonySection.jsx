@@ -71,6 +71,7 @@ const TestimonySection = () => {
   const scrollRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   useEffect(() => {
+    const animationIds = [];
     const scrollSpeed = 0.4;
     const directions = ["down", "up", "down"];
 
@@ -84,18 +85,26 @@ const TestimonySection = () => {
           el.scrollTop -= scrollSpeed;
           if (el.scrollTop <= 0) el.scrollTop = el.scrollHeight / 2;
         }
-        requestAnimationFrame(animate);
+        const id = requestAnimationFrame(animate);
+        animationIds.push(id);
       };
       animate();
     };
 
     const handleResize = () => {
+      // Stop any existing animations
+      animationIds.forEach((id) => cancelAnimationFrame(id));
+      animationIds.length = 0;
+
       const isMobile = window.innerWidth <= 768;
 
       if (isMobile) {
         const all = scrollRefs[3].current;
-        if (all) {
+        if (all && !all.dataset.duplicated) {
           all.innerHTML += all.innerHTML;
+          all.dataset.duplicated = "true";
+        }
+        if (all) {
           all.scrollTop = 0;
           startLoop(all, "down");
         }
@@ -103,17 +112,33 @@ const TestimonySection = () => {
         scrollRefs.forEach((ref, i) => {
           const el = ref.current;
           if (!el || i === 3) return;
-          el.innerHTML += el.innerHTML;
+          if (!el.dataset.duplicated) {
+            el.innerHTML += el.innerHTML;
+            el.dataset.duplicated = "true";
+          }
           if (directions[i] === "up") el.scrollTop = el.scrollHeight / 2;
           startLoop(el, directions[i]);
         });
       }
     };
 
+    // Debounce resize
+    let resizeTimeout;
+    const onResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 300);
+    };
+
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      animationIds.forEach((id) => cancelAnimationFrame(id));
+    };
   }, []);
+
+
 
   return (
     <section className="testimony-section" id="testimonials">

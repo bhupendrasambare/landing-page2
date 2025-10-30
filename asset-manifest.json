@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/landing-page2/static/css/main.81ad8c28.css",
+    "main.js": "/landing-page2/static/js/main.2839e271.js",
+    "static/media/TeamFrame2.png": "/landing-page2/static/media/TeamFrame2.fd7fc9d0d75d4f0944a5.png",
+    "static/media/TeamFrame1.png": "/landing-page2/static/media/TeamFrame1.5eb457104265929bcc04.png",
+    "static/media/TeamFrame3.png": "/landing-page2/static/media/TeamFrame3.a3004aeb563b4925c117.png",
+    "static/media/Frame4.png": "/landing-page2/static/media/Frame4.0d45c574a1f913f59a49.png",
+    "static/media/Frame3.png": "/landing-page2/static/media/Frame3.e4f2b2f74f64611aa1fa.png",
+    "static/media/herosection.png": "/landing-page2/static/media/herosection.805d123777c62b019502.png",
+    "static/media/Frame2.png": "/landing-page2/static/media/Frame2.40edf2e3bfc7411a9e38.png",
+    "static/media/Frame1.png": "/landing-page2/static/media/Frame1.6e64e96d0ebb9021110f.png",
+    "static/media/bg-style.png": "/landing-page2/static/media/bg-style.7b050280f29f0ef4ebf3.png",
+    "static/media/Frame5.png": "/landing-page2/static/media/Frame5.4e4a27143c10121a825a.png",
+    "static/media/MPRAR.png": "/landing-page2/static/media/MPRAR.45d83ca3a522d962d5d0.png",
+    "index.html": "/landing-page2/index.html",
+    "main.81ad8c28.css.map": "/landing-page2/static/css/main.81ad8c28.css.map",
+    "main.2839e271.js.map": "/landing-page2/static/js/main.2839e271.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81ad8c28.css",
+    "static/js/main.2839e271.js"
+  ]
+}

@@ -199,9 +199,10 @@
   }
 
   .page-number-bg {
-    top: 10vh;
+    top: 8.5vh;
+    font-size: 115px;
     right: 0;
-    left: 70%;
+    left: 75%;
     z-index: 1;
   }
 

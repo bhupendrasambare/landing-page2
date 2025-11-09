@@ -101,26 +101,35 @@ body {
 }
 
 .custom-navbar {
-  background: transparent !important;
-  box-shadow: none !important;
-  position: absolute;
+  /* background: transparent !important; */
+  /* box-shadow: none !important; */
+  /* position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%; */
   z-index: 100;
   transition: background 0.3s ease;
 }
 
+.nabar-bg{
+  background-color: rgba(128, 128, 128, 0.536);
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+}
+
 @media (max-width: 991px) {
   .custom-navbar {
-    position: relative !important;
-    backdrop-filter: blur(10px);
+    /* position: relative !important; */
   }
 }
 
 .navbar-logo {
   width: 100px;
   color: white !important;
+}
+.sticky-true {
+  position: fixed;
+  width: 100%;
 }
 
 .nav-link-item {
@@ -157,21 +166,41 @@ body {
   opacity: 1;
 }
 
-.getstarted-btn{
+/* Get Started button (same everywhere) */
+.getstarted-btn-nav {
   font-weight: 600;
-  background: linear-gradient(
-    to right,
-    rgba(175, 84, 221, 1),
-    rgba(118, 23, 167, 1)
-  );
-  color: white !important;
+  background: white;
+  color: rgba(118, 23, 167, 1) !important;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 20px;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
-.getstarted-btn:hover {
+.getstarted-btn-nav:hover {
   opacity: 0.9;
   transform: translateY(-2px);
+}
+
+/* Make Get Started align center in mobile view */
+@media (max-width: 991px) {
+  .getstarted-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+/* Keep Get Started on the right in desktop view */
+@media (min-width: 992px) {
+  .nav-container {
+    flex: 1;
+    justify-content: center !important;
+  }
+
+  .getstarted-wrapper {
+    position: absolute;
+    right: 0;
+  }
 }

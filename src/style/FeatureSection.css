@@ -57,7 +57,7 @@
 }
 
 .feature-card.reversed {
-  background-color: rgba(175, 84, 221, 1);
+  background-color: #fff;
 }
 
 .feature-icon {
@@ -78,8 +78,8 @@
 }
 
 .feature-card.reversed .feature-icon {
-  background-color: rgba(175, 84, 221, 1);
-  color: #fff;
+  background-color: #fff;
+  color: rgba(175, 84, 221, 1);
 }
 
 .feature-card-content {
@@ -107,7 +107,7 @@
 
 .feature-card.reversed .feature-card-content h4,
 .feature-card.reversed .feature-card-content p {
-  color: #fff;
+  color: #111;
 }
 
 @media (max-width: 768px) {

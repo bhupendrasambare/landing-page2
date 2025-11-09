@@ -5,11 +5,12 @@ import LOGO_IMAGE from "../assets/logo.png";
 
 const NavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const navLinks = [
-    {"name":"Features", tag:"features"},
-    {"name":"Demo", tag:"demo"},
-    {"name":"Why Us", tag:"why-us"},
-    {"name":"Testimonials", tag:"testimonials"}
+    { name: "Features", tag: "features" },
+    { name: "Demo", tag: "demo" },
+    { name: "Why Us", tag: "why-us" },
+    { name: "Testimonials", tag: "testimonials" },
   ];
 
   const handleGetStarted = () => {
@@ -17,8 +18,9 @@ const NavbarComponent = () => {
   };
 
   return (
-    <Navbar expand="lg" className="custom-navbar" expanded={isOpen}>
-      <div className="container">
+    <Navbar expand="lg" sticky className="custom-navbar" expanded={isOpen}>
+      <div className="container d-flex align-items-center justify-content-between nabar-bg">
+        {/* Logo */}
         <Navbar.Brand
           as={motion.a}
           href="#"
@@ -30,6 +32,7 @@ const NavbarComponent = () => {
           <img src={LOGO_IMAGE} alt="logo" />
         </Navbar.Brand>
 
+        {/* Mobile toggle */}
         <Navbar.Toggle
           as={motion.button}
           onClick={() => setIsOpen(!isOpen)}
@@ -45,30 +48,32 @@ const NavbarComponent = () => {
           </div>
         </Navbar.Toggle>
 
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="align-items-center gap-3">
+        {/* Nav Links + Button */}
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
+          <Nav className="mx-auto gap-3 align-items-center nav-container">
             {navLinks.map((link, idx) => (
               <motion.div
                 key={link.tag}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
               >
-                <Nav.Link
-                  href={`#${link.tag.toLowerCase()}`}
-                  className="nav-link-item"
-                >
+                <Nav.Link href={`#${link.tag}`} className="nav-link-item">
                   {link.name}
                 </Nav.Link>
               </motion.div>
             ))}
 
+            {/* Single unified Get Started button */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + navLinks.length * 0.1 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + navLinks.length * 0.1 }}
+              className="getstarted-wrapper me-3"
             >
-              <div className="getstarted-btn btn btn-sm"  onClick={handleGetStarted}>Get Started</div>
+              <button className="getstarted-btn-nav" onClick={handleGetStarted}>
+                Get Started
+              </button>
             </motion.div>
           </Nav>
         </Navbar.Collapse>

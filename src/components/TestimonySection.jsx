@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "../style/TestimonySection.css";
 import user1 from "../assets/testimony/user1.png";
 import user2 from "../assets/testimony/user2.png";
@@ -7,19 +7,19 @@ import user3 from "../assets/testimony/user3.png";
 const testimonialsGroup = [
   [
     {
-      text: "Onboarding new employees used to take days — now it’s done in minutes. The automation is a game changer.",
+      text: "Onboarding new employees used to take days — now it's done in minutes. The automation is a game changer.",
       name: "Sarah Mitchell",
       title: "HR Director, FinEdge",
       img: user1,
     },
-    { 
+    {
       text: "This tool has streamlined our communication and boosted employee engagement like never before.",
       name: "Aisha Thompson",
       title: "CEO, WorkWave",
       img: user2,
     },
     {
-      text: "We’ve reduced our manual HR workload by over 50%. It’s been a total productivity booster.",
+      text: "We've reduced our manual HR workload by over 50%. It's been a total productivity booster.",
       name: "Daniel Carter",
       title: "People Ops Lead, FlowTech",
       img: user3,
@@ -33,7 +33,7 @@ const testimonialsGroup = [
       img: user3,
     },
     {
-      text: "We finally have a single source of truth for employee data — and it’s so easy to use.",
+      text: "We finally have a single source of truth for employee data — and it's so easy to use.",
       name: "Maria Lopez",
       title: "HR Manager, CloudSync",
       img: user2,
@@ -47,7 +47,7 @@ const testimonialsGroup = [
   ],
   [
     {
-      text: "Our payroll process is now faster and error-free. Couldn’t be happier with the results!",
+      text: "Our payroll process is now faster and error-free. Couldn't be happier with the results!",
       name: "James Rodriguez",
       title: "Finance Head, NovaCore",
       img: user2,
@@ -68,77 +68,7 @@ const testimonialsGroup = [
 ];
 
 const TestimonySection = () => {
-  const scrollRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-
-  useEffect(() => {
-    const animationIds = [];
-    const scrollSpeed = 0.4;
-    const directions = ["down", "up", "down"];
-
-    const startLoop = (el, direction) => {
-      if (!el) return;
-      const animate = () => {
-        if (direction === "down") {
-          el.scrollTop += scrollSpeed;
-          if (el.scrollTop >= el.scrollHeight / 2) el.scrollTop = 0;
-        } else {
-          el.scrollTop -= scrollSpeed;
-          if (el.scrollTop <= 0) el.scrollTop = el.scrollHeight / 2;
-        }
-        const id = requestAnimationFrame(animate);
-        animationIds.push(id);
-      };
-      animate();
-    };
-
-    const handleResize = () => {
-      // Stop any existing animations
-      animationIds.forEach((id) => cancelAnimationFrame(id));
-      animationIds.length = 0;
-
-      const isMobile = window.innerWidth <= 768;
-
-      if (isMobile) {
-        const all = scrollRefs[3].current;
-        if (all && !all.dataset.duplicated) {
-          all.innerHTML += all.innerHTML;
-          all.dataset.duplicated = "true";
-        }
-        if (all) {
-          all.scrollTop = 0;
-          startLoop(all, "down");
-        }
-      } else {
-        scrollRefs.forEach((ref, i) => {
-          const el = ref.current;
-          if (!el || i === 3) return;
-          if (!el.dataset.duplicated) {
-            el.innerHTML += el.innerHTML;
-            el.dataset.duplicated = "true";
-          }
-          if (directions[i] === "up") el.scrollTop = el.scrollHeight / 2;
-          startLoop(el, directions[i]);
-        });
-      }
-    };
-
-    // Debounce resize
-    let resizeTimeout;
-    const onResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(handleResize, 300);
-    };
-
-    handleResize();
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-      animationIds.forEach((id) => cancelAnimationFrame(id));
-    };
-  }, []);
-
-
+  const directions = ["up", "down", "up"];
 
   return (
     <section className="testimony-section" id="testimonials">
@@ -146,40 +76,57 @@ const TestimonySection = () => {
         <h2 className="testimony-title">Trusted by Industry Leaders</h2>
         <p className="testimony-subtitle">See what our customers have to say</p>
 
-        {/* Desktop view (3 columns) */}
+        {/* Desktop */}
         <div className="testimony-scroll-container desktop">
           {testimonialsGroup.map((group, i) => (
-            <div key={i} ref={scrollRefs[i]} className="scroll-column">
-              {group.map((t, idx) => (
-                <div key={idx} className="testimonial-card">
-                  <p className="testimonial-text">{t.text}</p>
-                  <div className="testimonial-user">
-                    <img src={t.img} alt={t.name} className="testimonial-img" />
-                    <div>
-                      <p className="testimonial-name">{t.name}</p>
-                      <p className="testimonial-title">{t.title}</p>
+            <div
+              key={i}
+              className={`scroll-column ${
+                directions[i] === "down" ? "scroll-down" : "scroll-up"
+              }`}
+            >
+              <div className="scroll-inner">
+                {[...group, ...group].map((t, idx) => (
+                  <div key={idx} className="testimonial-card">
+                    <p className="testimonial-text">{t.text}</p>
+                    <div className="testimonial-user">
+                      <img src={t.img} alt={t.name} className="testimonial-img" />
+                      <div>
+                        <p className="testimonial-name">{t.name}</p>
+                        <p className="testimonial-title">{t.title}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Mobile view (combined scroll) */}
-        <div className="testimony-scroll-container mobile" ref={scrollRefs[3]}>
-          {testimonialsGroup.flat().map((t, idx) => (
-            <div key={idx} className="testimonial-card">
-              <p className="testimonial-text">{t.text}</p>
-              <div className="testimonial-user">
-                <img src={t.img} alt={t.name} className="testimonial-img" />
-                <div>
-                  <p className="testimonial-name">{t.name}</p>
-                  <p className="testimonial-title">{t.title}</p>
-                </div>
-              </div>
+        {/* Mobile */}
+        <div className="testimony-scroll-container mobile">
+          <div className="scroll-column scroll-down">
+            <div className="scroll-inner">
+              {[...testimonialsGroup.flat(), ...testimonialsGroup.flat()].map(
+                (t, idx) => (
+                  <div key={idx} className="testimonial-card">
+                    <p className="testimonial-text">{t.text}</p>
+                    <div className="testimonial-user">
+                      <img
+                        src={t.img}
+                        alt={t.name}
+                        className="testimonial-img"
+                      />
+                      <div>
+                        <p className="testimonial-name">{t.name}</p>
+                        <p className="testimonial-title">{t.title}</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              )}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

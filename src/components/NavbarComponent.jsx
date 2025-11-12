@@ -8,8 +8,8 @@ const NavbarComponent = () => {
 
   const navLinks = [
     { name: "Features", tag: "features" },
-    { name: "Demo", tag: "demo" },
     { name: "Why Us", tag: "why-us" },
+    { name: "Goal", tag: "goal" },
     { name: "Testimonials", tag: "testimonials" },
   ];
 

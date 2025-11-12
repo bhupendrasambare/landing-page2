@@ -1,4 +1,4 @@
-import HERO_SECTION_IMAGE from "../assets/herosection.png";
+import HERO_SECTION_IMAGE from "../assets/hero-section.png";
 import "../style/HeroStyle.css";
 import { motion } from "framer-motion";
 
@@ -27,7 +27,7 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          Trusted by 10,000+ Companies Worldwide
+          Trusted by 1,000+ Companies Worldwide
         </motion.div>
 
         <motion.h1
@@ -36,7 +36,7 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          Complete Employee Management Ecosystem
+          Built for Real-World Workforce Management
         </motion.h1>
 
         <motion.p
@@ -45,9 +45,7 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          From clocking in to performance reviews, manage every aspect of your
-          workforce with one powerful platform. Designed for employees,
-          managers, and administrators.
+          From clocking in to performance reviews, manage every aspect of your workforce with one powerful platform. Designed for administrators, employees, and managers.
         </motion.p>
 
         <motion.div
@@ -61,7 +59,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="hero-image mt-5"
+          className="hero-image mt-2"
           variants={imageVariant}
           initial="hidden"
           animate="visible"

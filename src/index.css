@@ -107,13 +107,15 @@ body {
   top: 0;
   left: 0;
   width: 100%; */
+  padding-left: 40px;
+  padding-right: 40px;
   z-index: 100;
   transition: background 0.3s ease;
 }
 
 .nabar-bg{
   background-color: rgba(128, 128, 128, 0.536);
-  border-radius: 5px;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
 }
 
@@ -168,11 +170,12 @@ body {
 
 /* Get Started button (same everywhere) */
 .getstarted-btn-nav {
+  font-size: 0.8rem;
   font-weight: 600;
   background: white;
   color: rgba(118, 23, 167, 1) !important;
   border: none;
-  padding: 5px 20px;
+  padding: 5px 10px;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
@@ -190,6 +193,10 @@ body {
     justify-content: center;
     margin-top: 10px;
   }
+
+  .collapse{
+    padding-bottom: 20px;
+  }
 }
 
 /* Keep Get Started on the right in desktop view */
@@ -203,4 +210,6 @@ body {
     position: absolute;
     right: 0;
   }
+
 }
+

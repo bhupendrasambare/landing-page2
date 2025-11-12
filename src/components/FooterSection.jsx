@@ -27,9 +27,9 @@ const FooterSection = () => {
             <div className="footer-links">
               <div className="footer-column">
                 <h4>Product</h4>
-                <a href="#features">Feature</a>
-                <a href="#demo">Demo</a>
+                <a href="#features">Features</a>
                 <a href="#why-us">Why us</a>
+                <a href="#goal">Goal</a>
                 <a href="#testimonials">Testimonials</a>
               </div>
 
@@ -50,9 +50,9 @@ const FooterSection = () => {
             </button>
           </div>
         </div>
-        <div className="mt-5 container">
+        {/* <div className="mt-5 container">
           <img src={bannerImg} alt="Footer Banner" className="footer-banner" />
-        </div>
+        </div> */}
       </footer>
     </>
   );

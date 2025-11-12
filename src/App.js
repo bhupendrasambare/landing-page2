@@ -15,7 +15,7 @@ const App = () => {
         <NavbarComponent />
         <HeroSection />
       </div>
-      <FeatureSection />
+      {/* <FeatureSection /> */}
       <MultiStackScroll />
       <TeamSection/>
       <DescriptionSection/>

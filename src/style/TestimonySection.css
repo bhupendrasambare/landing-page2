@@ -19,32 +19,39 @@
   text-align: left;
 }
 
-/* Scroll containers */
+/* ===============================
+   COMMON SCROLL CONTAINER STYLES
+   =============================== */
 .testimony-scroll-container {
   display: flex;
   gap: 1.5rem;
   overflow: hidden;
   position: relative;
-}
-
-.scroll-column,
-.testimony-scroll-container {
-  will-change: transform;
-  transform: translateZ(0);
+  width: 100%;
 }
 
 .scroll-column {
-  scroll-behavior: auto !important;
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  max-height: 500px;
-  overflow-y: hidden;
+  max-height: 480px;
+  overflow: hidden;
   justify-content: center;
+  position: relative;
 }
 
-/* Card */
+.scroll-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  will-change: transform;
+  transform: translateY(0);
+}
+
+/* ===============================
+   TESTIMONIAL CARD
+   =============================== */
 .testimonial-card {
   background: #fff;
   border-radius: 1rem;
@@ -52,6 +59,7 @@
   padding: 1.5rem;
   color: #333;
   max-width: 360px;
+  margin: 0 auto;
 }
 
 .testimonial-text {
@@ -82,14 +90,16 @@
   font-size: 0.9rem;
 }
 
-/* Gradient fade at top & bottom */
+/* ===============================
+   FADE EFFECTS
+   =============================== */
 .testimony-scroll-container::before,
 .testimony-scroll-container::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 60px;
   z-index: 5;
   pointer-events: none;
 }
@@ -104,32 +114,80 @@
   background: linear-gradient(to top, white, transparent);
 }
 
-/* Desktop vs Mobile view */
-.desktop {
-  display: flex;
+/* ===============================
+   SCROLL ANIMATION
+   =============================== */
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
 }
 
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.scroll-up .scroll-inner {
+  animation: scroll-up 20s linear infinite;
+}
+
+.scroll-down .scroll-inner {
+  animation: scroll-down 20s linear infinite;
+}
+
+/* ===============================
+   DESKTOP LAYOUT
+   =============================== */
+.desktop {
+  display: flex;
+  justify-content: center;
+}
+
+.desktop .scroll-column {
+  flex: 1;
+}
+
+/* ===============================
+   MOBILE LAYOUT
+   =============================== */
 .mobile {
   display: none;
   flex-direction: column;
-  gap: 1.2rem;
-  max-height: 500px;
-  overflow-y: hidden;
-  position: relative;
   align-items: center;
+  overflow: hidden;
+  position: relative;
+  max-height: 480px;
+  width: 100%;
 }
 
+.mobile .scroll-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  animation: scroll-down 25s linear infinite;
+}
+
+/* Add fade overlay for mobile */
 .mobile::before,
 .mobile::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 60px;
   z-index: 5;
   pointer-events: none;
 }
-
 
 .mobile::before {
   top: 0;
@@ -139,8 +197,11 @@
 .mobile::after {
   bottom: 0;
   background: linear-gradient(to top, white, transparent);
-} 
+}
 
+/* ===============================
+   RESPONSIVE BEHAVIOR
+   =============================== */
 @media (max-width: 768px) {
   .desktop {
     display: none;
@@ -148,5 +209,17 @@
 
   .mobile {
     display: flex;
+  }
+
+  .testimonial-card {
+    max-width: 90%;
+  }
+
+  .scroll-column {
+    max-height: 400px;
+  }
+
+  .testimony-scroll-container {
+    flex-direction: column;
   }
 }
